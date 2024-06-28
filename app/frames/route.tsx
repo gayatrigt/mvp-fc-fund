@@ -1,55 +1,44 @@
+import { frames } from "@/app/utils/frames";
 import { farcasterHubContext } from "frames.js/middleware";
 import { createFrames, Button } from "frames.js/next";
+import { env } from "process";
 
-const frames = createFrames({
-  basePath: '/frames',
-  middleware: [
-    farcasterHubContext({
-      // remove if you aren't using @frames.js/debugger or you just don't want to use the debugger hub
-      ...(process.env.NODE_ENV === "production"
-        ? {}
-        : {
-            hubHttpUrl: "http://localhost:3010/hub",
-          }),
-    }),
-  ],
-});
+export type State = {
+  chain: string;
+};
 
 const handleRequest = frames(async (ctx) => {
+
   return {
-    image: ctx.message ? (
+    image: (
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          height: "100%",
+          position: "relative",
         }}
       >
-        GM, {ctx.message.requesterUserData?.displayName}! Your FID is{" "}
-        {ctx.message.requesterFid}
-        {", "}
-        {ctx.message.requesterFid < 20_000
-          ? "you're OG!"
-          : "welcome to the Farcaster!"}
-      </div>
-    ) : (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        Say GM
+        <BgImage />
       </div>
     ),
-    buttons: !ctx.url.searchParams.has("saidGm")
-      ? [
-          <Button action="post" target={{ query: { saidGm: true } }}>
-            Say GM
-          </Button>,
-        ]
-      : [],
+    imageOptions: {
+      width: 650,
+      height: 356,
+    },
+    buttons: [
+      <Button action="post" target="/projects">
+        Browse
+      </Button>,
+    ],
   };
 });
+
+function BgImage({ width = '100%', tw }: { width?: string; tw?: string }) {
+  return <img src={`${env.HOST_URL}/mvp-main.png`} alt="background" width={width} tw={tw} />;
+}
 
 export const GET = handleRequest;
 export const POST = handleRequest;
