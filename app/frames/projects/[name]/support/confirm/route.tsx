@@ -153,7 +153,7 @@ function BgImage2({ width = '100%', tw }: { width?: string; tw?: string }) {
     return <img src={`${env.HOST_URL}/trans.png`} alt="background" width={width} tw={tw} />;
 }
 
-export function findProjectByName(name: string): (typeof dummyProjects)[number] | null {
+function findProjectByName(name: string): (typeof dummyProjects)[number] | null {
     return dummyProjects.find(project => project.name === name) || null;
 }
 

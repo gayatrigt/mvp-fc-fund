@@ -104,6 +104,6 @@ const handleRequest = async (
 export const GET = handleRequest;
 export const POST = handleRequest;
 
-export function findProjectByName(name: string): (typeof dummyProjects)[number] | null {
+function findProjectByName(name: string): (typeof dummyProjects)[number] | null {
     return dummyProjects.find(project => project.name === name) || null;
 }
