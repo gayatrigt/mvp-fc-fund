@@ -40,5 +40,6 @@ function BgImage({ width = '100%', tw }: { width?: string; tw?: string }) {
   return <img src={`${env.HOST_URL}/mvp-main.png`} alt="background" width={width} tw={tw} />;
 }
 
+
 export const GET = handleRequest;
 export const POST = handleRequest;
