@@ -1,5 +1,11 @@
 export const dummyProjects = [
     {
+        name: "Enjoy 0kcal",
+        fid: 3307,
+        wallet: "0xAF23D4e2108e2098d7C4ff56e329e36fef358253",
+        imageName: "enjoy0kcal.png"
+    },
+    {
         name: "Based Coffee",
         fid: 469678,
         wallet: "0x2CD1353Cf0E402770643B54011A63B546a189c44",
