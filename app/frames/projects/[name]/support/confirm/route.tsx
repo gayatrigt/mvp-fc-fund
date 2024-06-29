@@ -29,7 +29,7 @@ const handleRequest = async (
         let currentProjectName = name || dummyProjects[0].name;
         const projectIndex = dummyProjects.findIndex(project => project.name === currentProjectName);
         const prevProjectName = projectIndex > 0 ? dummyProjects[projectIndex - 1].name : "/projects";
-        
+
         if (ctx.message?.transactionId) {
 
             const txnHash = ctx.message.transactionId
@@ -72,7 +72,7 @@ const handleRequest = async (
         }
 
         if (fid) {
-            saveSupporttData(fid, txn_id, name)
+            saveSupporttData(fid, txn_id, name, amt)
         }
 
         return {
@@ -143,7 +143,7 @@ const handleRequest = async (
             },
             buttons: [
                 <Button action="post" target={`/projects`}>
-                        Home
+                    Home
                 </Button>,
                 <Button action="tx" target={{
                     pathname: `/txdata`, query: { amount: amt, wallet: wallet, chain: chain }
@@ -167,13 +167,13 @@ function findProjectByName(name: string): (typeof dummyProjects)[number] | null 
     return dummyProjects.find(project => project.name === name) || null;
 }
 
-async function saveSupporttData(fid: number, txn_id: string, projectName: string) {
+async function saveSupporttData(fid: number, txn_id: string, projectName: string, amt: any) {
     try {
 
         const { data, error } = await supabase
             .from('MVP')
             .insert([
-                { fid, txn_id, project_name: projectName }
+                { fid, txn_id, project_name: projectName, amount: amt }
             ])
 
         if (error) {
