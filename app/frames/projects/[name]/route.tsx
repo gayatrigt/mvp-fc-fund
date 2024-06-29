@@ -78,9 +78,16 @@ const handleRequest = async (
                 height: 356,
             },
             buttons: [
+                currentIndex == 0 ?
+                (
+                    <Button action="post" target={`/projects`}>
+                    Home
+                    </Button>
+                ) : (
                 <Button action="post" target={`/projects/${prevProjectName || dummyProjects[dummyProjects.length - 1].name}`}>
-                    👈 Back
-                </Button>,
+                👈 Back
+                    </Button>
+                ),
                 <Button action="post" target={`/projects/${currentProject.name}/rewards`}>
                     ❤️❤️❤️
                 </Button>,
