@@ -39,5 +39,17 @@ export const dummyProjects = [
         fid: 244416,
         wallet: "0x3039e4a4a540F35ae03A09f3D5A122c49566f919",
         imageName: "farview.png"
+    },
+    {
+        name: "Coven Classics",
+        fid: 4027,
+        wallet: "0x3a2FaC2AB3cf4bc342910EAC744CC68C8b9a69bf",
+        imageName: "coven.png"
+    },
+    {
+        name: "Superwarp",
+        fid: 1350,
+        wallet: "0xbC7B5142e390BBaABF8826dAE7E1ef9C609Df327",
+        imageName: "superwarp.png"
     }
 ];
