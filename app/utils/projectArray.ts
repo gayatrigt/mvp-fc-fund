@@ -7,7 +7,7 @@ export const dummyProjects = [
     },
     {
         name: "Drafts",
-        fid: 479,
+        fid: 469678,
         "wallet": "0x2CD1353Cf0E402770643B54011A63B546a189c44",
         imageName: "drafts.png"
     },
