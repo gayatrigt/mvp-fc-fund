@@ -27,5 +27,11 @@ export const dummyProjects = [
         fid: 11155,
         wallet: "0x0674ab75Cbf5f3165Fe70BE116Bed13DF134664A",
         imageName: "rolodex.png"
+    },
+    {
+        name: "Higherboard",
+        fid: 599407,
+        wallet: "0x2BAC66A77b700aF2d54C43E89A823461E60316f7",
+        imageName: "higherboard.png"
     }
 ];
