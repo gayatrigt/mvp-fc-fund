@@ -30,7 +30,7 @@ const handleRequest = frames(async (ctx) => {
     },
     buttons: [
       <Button action="post" target="/projects">
-        Browse
+        Show me the projects
       </Button>,
     ],
   };
