@@ -26,7 +26,10 @@ const handleRequest = async (
         const wallet = data?.wallet || neynarData.users[0].verified_addresses.eth_addresses[0]
 
         const txn_id = uuidv4(); // Generate a unique ID
-
+        let currentProjectName = name || dummyProjects[0].name;
+        const projectIndex = dummyProjects.findIndex(project => project.name === currentProjectName);
+        const prevProjectName = projectIndex > 0 ? dummyProjects[projectIndex - 1].name : "/projects";
+        
         if (ctx.message?.transactionId) {
 
             const txnHash = ctx.message.transactionId
@@ -116,13 +119,17 @@ const handleRequest = async (
                         }}>
                             <span style={{
                                 fontSize: "30px",
-
+                                marginTop: "30px",
                             }}>
-                                You are supporting {neynarData.users[0].username}
+                                You are supporting @{neynarData.users[0].username}
                             </span>
                             <span style={{
-                                fontSize: "20px",
-                                marginTop: "10px",
+                                fontSize: "30px",
+                            }}>for {currentProjectName}.
+                            </span>
+                            <span style={{
+                                fontSize: "40px",
+                                marginTop: "20px",
                             }}>
                                 {amt} ETH
                             </span>
@@ -135,6 +142,9 @@ const handleRequest = async (
                 height: 356,
             },
             buttons: [
+                <Button action="post" target={`/projects`}>
+                        Home
+                </Button>,
                 <Button action="tx" target={{
                     pathname: `/txdata`, query: { amount: amt, wallet: wallet, chain: chain }
                 }} post_url={`/projects/${name}/support/confirm`}>

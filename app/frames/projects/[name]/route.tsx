@@ -79,17 +79,19 @@ const handleRequest = async (
             },
             buttons: [
                 <Button action="post" target={`/projects/${prevProjectName || dummyProjects[dummyProjects.length - 1].name}`}>
-                    Back
+                    👈 Back
                 </Button>,
                 <Button action="post" target={`/projects/${currentProject.name}/rewards`}>
-                    Interested ❤
+                    ❤️❤️❤️
                 </Button>,
+                currentProject.wallet ?(
                 <Button action="post" target={`/projects/${currentProject.name}/support`}>
                     Support 💰
-                </Button>,
+                    </Button>
+                ) : null,
                 nextProjectName ? (
                     <Button action="post" target={`/projects/${nextProjectName}`}>
-                        Next
+                        Next 👉
                     </Button>
                 ) : (
                     <Button action="post" target={`/projects`}>
