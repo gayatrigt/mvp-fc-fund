@@ -88,4 +88,10 @@ export const dummyProjects = [
         wallet: "0xAF23D4e2108e2098d7C4ff56e329e36fef358253",
         imageName: "enjoy0kcal.png"
     },
+    {
+        name: "Basics Academy",
+        fid: 196278,
+        wallet: "0xd05eCA82d8573b885E4BCc4fCf677E02324e6835",
+        imageName: "basicsacademy.png"
+    }
 ];
